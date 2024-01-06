@@ -1,0 +1,40 @@
+###
+GET  http://localhost:3000/user
+
+###
+GET http://localhost:3000/user/1234589
+
+###
+POST http://localhost:3000/user
+
+Content-Type: application/json
+
+   {"name": "John",
+    "_id": "122"}
+
+###
+PUT http://localhost:3000/user/1
+
+Content-Type: application/json
+{
+    "name": "John",
+    "_id": "122"
+}
+
+###
+DELETE http://localhost:3000/user/122
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
