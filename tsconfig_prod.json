@@ -7,7 +7,7 @@
        "moduleResolution": "node",
        "sourceMap": true,
        "outDir": "dist",
-       "types": ["@types/multer", "@types/express", "@types/node"]
+       
     },
     "lib": ["es2015"],
     "exclude": ["./src/tests"]
