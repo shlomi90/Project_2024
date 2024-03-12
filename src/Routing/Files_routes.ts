@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post('/', upload.single("file"), function (req, res) {
-  const filePath = req.file.path.replace(/\\/g, "/"); // Convert backslashes to forward slashes
+  const filePath = (req as any).file.path.replace(/\\/g, "/"); // Convert backslashes to forward slashes
   console.log("router.post(/file: " + base + filePath);
   res.status(200).send({ url: base + filePath });
 });
