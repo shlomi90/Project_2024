@@ -5,5 +5,6 @@ exports.default = {
     preset: "ts-jest",
     testEnvironment: "node",
     roots: ["<rootDir>/src"],
+    testTimeout: 10000
 };
 //# sourceMappingURL=jest.config.js.map
