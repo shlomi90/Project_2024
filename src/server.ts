@@ -2,6 +2,8 @@ import initApp from "./app";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
 import http from "http";
+import fs from "fs";
+import https from "https";
 
 initApp().then((app) => {
    
@@ -26,6 +28,13 @@ initApp().then((app) => {
             console.log('Starting server in development mode');
             http.createServer(app).listen(port);
         }
-        //comment
+        else{
+            console.log('Starting server in production mode');
+            const option2 = {
+                key: fs.readFileSync('../client-key.pem'),
+                cert: fs.readFileSync('../client-cert.pem') 
+            };
+            https.createServer(option2, app).listen(process.env.HTTPS_PORT);
+        }
 
     });
