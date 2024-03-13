@@ -23,10 +23,14 @@ initApp().then((app) => {
         app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
         const port = process.env.PORT;
+        const httpsPort = process.env.HTTPS_PORT;
 
         if (process.env.NODE_ENV !== 'production') {
             console.log('Starting server in development mode');
             http.createServer(app).listen(port);
+            console.log('Server is running on port ' + port);
+            
+           
         }
         else{
             console.log('Starting server in production mode');
@@ -34,8 +38,8 @@ initApp().then((app) => {
                 key: fs.readFileSync('../client-key.pem'),
                 cert: fs.readFileSync('../client-cert.pem') 
             };
-            https.createServer(option2, app).listen(process.env.HTTPS_PORT);
-            console.log('Server is running on port ' + process.env.HTTPS_PORT);
+            https.createServer(option2, app).listen(httpsPort);
+            console.log('Server is running on port ' + httpsPort);
             
         }
 
