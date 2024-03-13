@@ -26,7 +26,7 @@ const initApp=()=>{
             app.use(commentRoute);
             app.use('/file', fileRout);
             app.use("/public", express.static('public'));
-            app.use("/public", express.static('dist/assets'));
+            app.use(express.static('./dist'));
             app.use('*', (req, res) => {
                 res.sendFile('index.html', { root: 'dist' });
             });
