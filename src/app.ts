@@ -29,6 +29,7 @@ const initApp=()=>{
             app.use("/public", express.static('dist/assets'));
             app.use('*', (req, res) => {
                 res.sendFile('index.html', { root: 'dist' });
+            });
             resolve(app);
     });
 });
