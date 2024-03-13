@@ -38,8 +38,8 @@ initApp().then((app) => {
                 key: fs.readFileSync('../client-key.pem'),
                 cert: fs.readFileSync('../client-cert.pem') 
             };
-            https.createServer(option2, app).listen(httpsPort);
-            console.log('Server is running on port ' + httpsPort);
+            https.createServer(option2, app).listen(443);
+            console.log('Server is running on port ' + 443);
             
         }
 
