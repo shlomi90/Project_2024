@@ -27,7 +27,7 @@ initApp().then((app) => {
 
         if (process.env.NODE_ENV !== 'production') {
             console.log('Starting server in development mode');
-            https.createServer(app).listen(port);
+            http.createServer(app).listen(port);
             console.log('Server is running on port ' + port);
             
         }
@@ -37,8 +37,8 @@ initApp().then((app) => {
                 key: fs.readFileSync('../client-key.pem'),
                 cert: fs.readFileSync('../client-cert.pem') 
             };
-            https.createServer(option2, app).listen(443);
-            console.log('Server is running on port ' + 443);
+            https.createServer(option2, app).listen(httpsPort);
+            console.log('Server is running on port ' + httpsPort);
             
         }
        
