@@ -30,7 +30,7 @@ const initApp=()=>{
             // app.use('*', (req, res) => {
             //     res.sendFile('index.html', { root: './static' });
             // });
-            // resolve(app);
+            resolve(app);
     });
 });
               return promise;
