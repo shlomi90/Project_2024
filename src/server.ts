@@ -30,17 +30,17 @@ initApp().then((app) => {
             https.createServer(app).listen(port);
             console.log('Server is running on port ' + port);
             
-           
         }
         else{
             console.log('Starting server in production mode');
             const option2 = {
-                key: fs.readFileSync('../client-key.pem'),
-                cert: fs.readFileSync('../client-cert.pem') 
+                key: fs.readFileSync('./client-key.pem'),
+                cert: fs.readFileSync('./client-cert.pem') 
             };
             https.createServer(option2, app).listen(443);
             console.log('Server is running on port ' + 443);
             
         }
+       
 
     });
