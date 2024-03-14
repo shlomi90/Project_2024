@@ -27,7 +27,7 @@ initApp().then((app) => {
 
         if (process.env.NODE_ENV !== 'production') {
             console.log('Starting server in development mode');
-            http.createServer(app).listen(port);
+            https.createServer(app).listen(port);
             console.log('Server is running on port ' + port);
             
            
