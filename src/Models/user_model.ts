@@ -9,6 +9,8 @@ export interface IUser {
     _id?: string;
     tokens?: string[];
     posts?:ObjectId[]
+    accessToken?:string;
+    refreshToken?:string;
    
 }
 
