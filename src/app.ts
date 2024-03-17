@@ -21,7 +21,7 @@ const initApp=()=>{
             app.options('*', cors());
             app.use(cors());
             app.use(cors({
-                origin: ['https://193.106.55.205/', 'http://localhost:5173','http://localhost:3000','https://node45.cs.colman.ac.il'] // Replace with your actual domain
+                origin: ['https://193.106.55.205/', 'https://localhost:5173','https://localhost:3000','https://node45.cs.colman.ac.il'] // Replace with your actual domain
               }));
               
             app.use('/member', memberRoute);
