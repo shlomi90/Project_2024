@@ -39,7 +39,7 @@ const googleSignIn = async (req: Request, res: Response) => {
         console.log("refresh token: "+refreshToken);
         return res.status(200).send
         ({"message":"success",
-        'access token:':user.accessToken,
+        'access token:':user.tokens[0],
         'refresh token:':user.refreshToken,
         'user id:':user._id,
         'username:':user.username,
