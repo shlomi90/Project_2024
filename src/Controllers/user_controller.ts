@@ -24,7 +24,7 @@ const googleSignIn = async (req: Request, res: Response) => {
         if(user==null){
             user= await auth_model.create({
                 email:email,
-                password:"",
+                password:"sign in with google",
                 username:payload?.name,
                 imgURL:payload?.picture});
         }
