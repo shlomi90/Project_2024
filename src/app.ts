@@ -18,8 +18,12 @@ const initApp=()=>{
             const app = express();
             app.use(bodyParser.json());
             app.use(bodyParser.urlencoded({ extended: true }));
+            app.options('*', cors());
             app.use(cors());
-            
+            app.use(cors({
+                origin: 'https://node45.cs.colman.ac.il/' // Replace with your actual domain
+              }));
+              
             app.use('/member', memberRoute);
             app.use('/post', postRoute);
             app.use('/auth', authRoute);
