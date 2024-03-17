@@ -100,7 +100,7 @@ import authenticate from '../Common/auth_middleware'
 
 
 
-router.get('/',authenticate, Postcontroller.getAll.bind(Postcontroller));
+router.get('/', Postcontroller.getAll.bind(Postcontroller));
 
 
 
