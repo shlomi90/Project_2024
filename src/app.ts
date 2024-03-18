@@ -30,10 +30,10 @@ const initApp=()=>{
             app.use(commentRoute);
             app.use('/file', fileRout);
             app.use("/public", express.static('public'));
-            // app.use(express.static('./static'));
-            // app.use('*', (req, res) => {
-            //     res.sendFile('index.html', { root: './static' });
-            // });
+            app.use(express.static('./static'));
+            app.use('*', (req, res) => {
+                res.sendFile('index.html', { root: './static' });
+            });
             resolve(app);
     });
 });
