@@ -1,7 +1,7 @@
 import env from 'dotenv';
 env.config();
 import express,{Express} from 'express';
-import bodyParser from 'body-parser';
+import bodyParser, { urlencoded } from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import memberRoute from './Routing/member_route';
@@ -16,12 +16,12 @@ const initApp=()=>{
         db.once('open', () => { console.log("DB connected 👍"); });
         mongoose.connect(process.env.DB_URL).then(() => {
             const app = express();
+            app.use(express.json());
+            app.use(urlencoded({ extended: true }));
             app.use(bodyParser.json());
             app.use(bodyParser.urlencoded({ extended: true }));
-            app.options('*', cors());
-            app.use(cors());
             app.use(cors({
-                origin: ['https://193.106.55.205/', 'https://localhost:5173','https://localhost:3000','https://node45.cs.colman.ac.il'] // Replace with your actual domain
+                origin: ['https://193.106.55.205/','https://node45.cs.colman.ac.il', 'https://localhost:5173','https://localhost:3000',] // Replace with your actual domain
               }));
               
             app.use('/member', memberRoute);
@@ -30,7 +30,7 @@ const initApp=()=>{
             app.use(commentRoute);
             app.use('/file', fileRout);
             app.use("/public", express.static('public'));
-            app.use(express.static('./static'));
+            app.use(express.static('./static/assets'));
             app.use('*', (req, res) => {
                 res.sendFile('index.html', { root: './static' });
             });
