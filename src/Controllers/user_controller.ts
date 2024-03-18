@@ -42,8 +42,8 @@ const googleSignIn = async (req: Request, res: Response) => {
         console.log(user.tokens[1]); // Accessing the refresh token from user.tokens
             return res.status(200).send({
                 "message": "success",
-                'access token:': user.tokens[0],
-                'refresh token:': user.tokens[1],
+                'access token:': accessToken,
+                'refresh token:': refreshToken,
                 'user id:': user._id,
                 'username:': user.username,
                 'imgURL:': user.imgURL,
