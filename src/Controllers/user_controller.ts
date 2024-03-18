@@ -6,6 +6,7 @@ import User from '../Models/user_model';
 import { IRequest } from '../Common/auth_middleware';
 import Auth from '../Models/user_model';
 import { OAuth2Client } from 'google-auth-library';
+import { log } from 'console';
 
 const client=new OAuth2Client();
 const googleSignIn = async (req: Request, res: Response) => {
@@ -37,20 +38,24 @@ const googleSignIn = async (req: Request, res: Response) => {
         await user.save();
         console.log("access token: "+accessToken);
         console.log("refresh token: "+refreshToken);
-        return res.status(200).send
-        ({"message":"success",
-        'access token:':user.tokens[0],
-        'refresh token:':user.refreshToken,
-        'user id:':user._id,
-        'username:':user.username,
-        'imgURL:':user.imgURL,
-        'email:':user.email,
-        'posts':user.posts,
-    });
-    }} catch(err){
+        console.log(user.tokens[0]); // Accessing the access token from user.tokens
+        console.log(user.tokens[1]); // Accessing the refresh token from user.tokens
+            return res.status(200).send({
+                "message": "success",
+                'access token:': user.tokens[0],
+                'refresh token:': user.tokens[1],
+                'user id:': user._id,
+                'username:': user.username,
+                'imgURL:': user.imgURL,
+                'email:': user.email,
+                'posts': user.posts,
+            });
+        }
+    }
+    catch (err) {
         console.log(err);
-    return res.status(400).send("error");
-}
+        return res.status(400).send("error");
+    }
 }
     
 
