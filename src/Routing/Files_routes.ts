@@ -3,7 +3,7 @@ const router = express.Router();
 import multer from "multer";
 import path from "path"; // Import the path module
 
-const base = "https://193.106.55.205/";
+const base = "https://node45.cs.colman.ac.il/";
 
 // Use path.join to generate platform-specific file paths
 const storage = multer.diskStorage({
